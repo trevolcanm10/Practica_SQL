@@ -77,3 +77,9 @@ SELECT p.titulo , a.nombre AS actor , r.personaje
 FROM reparto r
 JOIN peliculas p ON r.id_pelicula = p.id
 JOIN actores a ON r.id_actor = a.id;
+
+/*Cuantas peliculas tiene cada director */ 
+SELECT d.nombre AS director, COUNT(p.id) AS total_peliculas
+FROM directores d
+JOIN peliculas p ON d.id = p.id_director
+GROUP BY d.id;
