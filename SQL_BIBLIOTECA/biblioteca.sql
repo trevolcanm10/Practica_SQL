@@ -79,3 +79,26 @@ WHERE id = 1 ;
 UPDATE libros
 SET disponible = 1
 WHERE  id = 1 ; 
+
+--Libros con su autor
+SELECT l.titulo, l.año, a.nombre AS autor
+FROM libros l
+JOIN autores a ON l.id_autor = a.id;
+
+--Ver que libros estan disponibles
+SELECT titulo,genero,disponible
+FROM libros
+WHERE disponible = 1; 
+
+--Ver Historial de préstamos
+SELECT p.id,u.nombre AS usuario ,l.titulo AS libro,fecha_prestamo,fecha_devolucion
+from prestamos p
+JOIN usuarios u ON u.id = p.id_usuario
+JOIN libros l ON l.id = p.id_libro;
+
+--Ver que usuario tiene actualmente un libro prestado
+SELECT u.nombre, l.titulo
+FROM prestamos p
+JOIN usuarios u ON u.id = p.id_usuario
+JOIN libros l ON l.id = p.id_libro
+WHERE p.fecha_devolucion is NULL;
