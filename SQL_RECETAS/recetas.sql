@@ -85,4 +85,27 @@ VALUES
 (1,3,'Calentar la sartén y verter la mezcla.'),
 (1,4,'Cocinar por ambos lados hasta dorar.');
 
-SELECT * FROM pasos;
+
+--Mostrar todas las recetas con su categorias
+SELECT r.nombre AS receta, c.nombre AS categorias
+FROM recetas r
+JOIN categorias c ON c.id = r.id_categoria;
+
+--Mostrar ingredientes de una receta
+SELECT i.nombre , ri.cantidad
+FROM receta_ingredientes ri
+JOIN ingredientes i ON  i.id = ri.id_ingrediente
+WHERE ri.id_receta = 1;
+
+--Pasos ordenados de una receta
+SELECT numero_paso, instruccion
+FROM pasos 
+WHERE id_receta = 1
+ORDER BY numero_paso;
+
+--Buscar recetas que usan un ingrediente
+SELECT r.nombre AS receta
+FROM recetas r
+JOIN receta_ingredientes ri ON ri.id_receta = r.id
+JOIN ingredientes i ON i.id = ri.id_ingrediente
+WHERE i.nombre = 'Harina';
