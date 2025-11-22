@@ -53,7 +53,7 @@ VALUES
 ('Ensaladas');
 
 --Insertamos los ingredientes
-INSERT INTO categorias(nombre)
+INSERT INTO ingredientes(nombre)
 VALUES
 ('Harina'),
 ('Azúcar'),
@@ -68,4 +68,21 @@ INSERT INTO recetas (nombre,descripcion,tiempo_preparacion,porciones,id_categori
 VALUES
 ('Panqueques','Receta básica de panqueques caseros',15,4,1);
 
-SELECT * FROM recetas;
+
+--Ingredientes a la receta
+INSERT INTO receta_ingredientes(id_receta,id_ingrediente,cantidad)
+VALUES
+(1,1,'1 taza'),
+(1,2,'2 cucharadas'),
+(1,3,'2 unidades'),
+(1,4, '1 taza');
+
+--Agregar pasos
+INSERT INTO pasos (id_receta, numero_paso,instruccion)
+VALUES
+(1,1,'Mezclar la harina y el azúcar.'),
+(1,2,'Agregar los huevos y la leche, y batir.'),
+(1,3,'Calentar la sartén y verter la mezcla.'),
+(1,4,'Cocinar por ambos lados hasta dorar.');
+
+SELECT * FROM pasos;
